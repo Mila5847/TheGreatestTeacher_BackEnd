@@ -19,7 +19,7 @@ public class TeacherController {
         //List<Teacher> teachers =teacherService.getAllTeachers(firstName);
         List<TeacherResponse> teacherResponses= new ArrayList<TeacherResponse>();
         teacherResponses.add(new TeacherResponse(1, "Mila", "Kehayova"));
-        teacherResponses.add(new TeacherResponse(2, "Petar", "Kehayov"));
+        teacherResponses.add(new TeacherResponse(2, "George", "Kehayov"));
         teacherResponses.add(new TeacherResponse(3, "Eli", "Kehayova"));
 
         return teacherResponses;
