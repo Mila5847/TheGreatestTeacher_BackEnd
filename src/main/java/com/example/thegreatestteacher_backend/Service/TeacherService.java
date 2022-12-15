@@ -32,15 +32,9 @@ public class TeacherService {
         Teacher teacher = new Teacher(teacherRequest);
         return teacherRepository.save(teacher);
     }
-    public Course addCourseToTeacher(@PathVariable int teacherId, @Valid @RequestBody CourseRequest courseRequest) {
-        Teacher teacher = teacherRepository.findById(teacherId)
-                .orElseThrow(()-> new ResourceNotFoundException("The teacher cannot be found."));
-        Course courseToBeAdded = new Course(courseRequest);
-        courseToBeAdded.setTeacher(teacher);
-        return courseRepository.save(courseToBeAdded);
-    }
 
-    public List<Course> getAllCoursesForTeacher(@PathVariable int teacherId){
-        return courseRepository.getAllByTeacherId(teacherId);
+    public int deleteTeacher(int teacherId){
+        teacherRepository.deleteById(teacherId);
+        return teacherId;
     }
 }

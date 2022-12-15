@@ -13,13 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ScoreResponse {
     private int id;
-    private int currentScore;
-
-    private CourseResponse course;
 
     public ScoreResponse(Score score){
         id = score.getId();
-        currentScore = score.getScore();
-        course = new CourseResponse(score.getCourse());
     }
 }

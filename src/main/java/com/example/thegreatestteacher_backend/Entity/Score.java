@@ -21,23 +21,28 @@ public class Score {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="score")
-    public int score;
     @Column(name="numberVotes")
     public int numberVotes;
 
     @Column(name="totalScore")
-    public int totalScore;
+    public double totalScore;
 
     @OneToOne(optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="fk_course_id")
     private Course course;
 
-    public Score(ScoreRequest scoreRequest){
-        id = scoreRequest.getId();
-        score = scoreRequest.getScore();
-        /*numberVotes = scoreRequest.getNumberVotes();
-        totalScore = scoreRequest.getTotalScore();*/
+    public Score(Score score, ScoreRequest scoreRequest, Course course){
+        id = score.getId();
+        this.course = course;
+        numberVotes = score.getNumberVotes() + 1;
+        totalScore = score.getTotalScore() + scoreRequest.getScore();
+    }
+
+    public Score(ScoreRequest scoreRequest, Course course){
+        id = 1;
+        this.course = course;
+        numberVotes = 1;
+        totalScore = scoreRequest.getScore();
     }
 }

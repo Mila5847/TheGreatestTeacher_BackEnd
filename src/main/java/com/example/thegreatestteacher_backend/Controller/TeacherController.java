@@ -26,9 +26,6 @@ public class TeacherController {
     @Autowired
     TeacherService teacherService;
 
-    @Autowired
-    CourseService courseService;
-
     @GetMapping()
     public List<TeacherResponse> getAllTeachers(){
         List<Teacher> teachers =teacherService.getAllTeachers();
@@ -41,7 +38,7 @@ public class TeacherController {
 
         return teacherResponses;
     }
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public TeacherResponse addTeacher(@Valid @RequestBody TeacherRequest teacherRequest)
     {
@@ -49,24 +46,8 @@ public class TeacherController {
         return new TeacherResponse(teacherToBeAdded);
     }
 
-    @GetMapping("/{teacherId}/courses")
-    public List<CourseResponse> getCoursesOfTeacher(@PathVariable int teacherId){
-        List<Course> courses = teacherService.getAllCoursesForTeacher(teacherId);
-        List<CourseResponse> coursesResponses = new ArrayList<>();
-        for (Course course: courses) {
-            coursesResponses.add(new CourseResponse(course));
-        }
-        return coursesResponses;
-    }
-    @PostMapping("/{teacherId}/courses")
-    @ResponseStatus(HttpStatus.CREATED)
-    public CourseResponse addCourseToTeacher(@PathVariable int teacherId, @RequestBody CourseRequest courseRequest){
-        return new CourseResponse(teacherService.addCourseToTeacher(teacherId, courseRequest));
-    }
-
-    @PostMapping("/courses/{courseId}/scores")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ScoreResponse addScoreToCourse(@PathVariable int courseId, @RequestBody ScoreRequest scoreRequest){
-        return new ScoreResponse(courseService.addScoreToCourse(courseId, scoreRequest));
+    @DeleteMapping("/{teacherId}")
+    public int deleteTeacher(@PathVariable int teacherId){
+        return teacherService.deleteTeacher(teacherId);
     }
 }

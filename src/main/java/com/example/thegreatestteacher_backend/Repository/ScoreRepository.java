@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ScoreRepository extends CrudRepository<Score, Integer> {
+    public Score getScoresByCourseId(int courseId);
 }
