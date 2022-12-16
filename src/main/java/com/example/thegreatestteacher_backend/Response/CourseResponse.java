@@ -15,6 +15,15 @@ public class CourseResponse {
 
     private TeacherResponse teacher;
 
+    private int numberOfVotes;
+
+    public CourseResponse(Course course, int numberOfVotes){
+        id = course.getId();
+        name = course.getName();
+        teacher = new TeacherResponse(course.getTeacher());
+        this.numberOfVotes = numberOfVotes;
+    }
+
     public CourseResponse(Course course){
         id = course.getId();
         name = course.getName();

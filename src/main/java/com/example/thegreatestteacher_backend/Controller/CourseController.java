@@ -2,9 +2,11 @@ package com.example.thegreatestteacher_backend.Controller;
 
 
 import com.example.thegreatestteacher_backend.Entity.Course;
+import com.example.thegreatestteacher_backend.Entity.Score;
 import com.example.thegreatestteacher_backend.Request.CourseRequest;
 import com.example.thegreatestteacher_backend.Response.CourseResponse;
 import com.example.thegreatestteacher_backend.Service.CourseService;
+import com.example.thegreatestteacher_backend.Service.ScoreService;
 import com.example.thegreatestteacher_backend.Service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,12 +23,20 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
+    @Autowired
+    ScoreService scoreService;
+
     @GetMapping("/{teacherId}")
     public List<CourseResponse> getCoursesOfTeacher(@PathVariable int teacherId){
         List<Course> courses = courseService.getAllCoursesOfTeacher(teacherId);
         List<CourseResponse> coursesResponses = new ArrayList<>();
         for (Course course: courses) {
-            coursesResponses.add(new CourseResponse(course));
+            Score score = scoreService.getScoreOfCourse(course.getId());
+            int nbVotes = 0;
+            if(score != null){
+                nbVotes = score.getNumberVotes();
+            }
+            coursesResponses.add(new CourseResponse(course, nbVotes));
         }
         return coursesResponses;
     }

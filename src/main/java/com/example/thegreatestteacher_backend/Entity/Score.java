@@ -40,7 +40,7 @@ public class Score {
     }
 
     public Score(ScoreRequest scoreRequest, Course course){
-        id = 1;
+        id = scoreRequest.getId();
         this.course = course;
         numberVotes = 1;
         totalScore = scoreRequest.getScore();

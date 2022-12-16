@@ -31,4 +31,8 @@ public class ScoreService {
         Score scoreToBeAdded = new Score(score, scoreRequest, course);
         return scoreRepository.save(scoreToBeAdded);
     }
+
+    public Score getScoreOfCourse(int course_id){
+        return scoreRepository.getScoresByCourseId(course_id);
+    }
 }
