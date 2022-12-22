@@ -62,7 +62,7 @@ public class ScoreController {
             else{
                 overallScore = overAllTotal / overallNumberOfVotes;
             }
-            TeacherRatingsResponse teacherRatingsResponse = new TeacherRatingsResponse(teacher.getId(), fullName, overallScore);
+            TeacherRatingsResponse teacherRatingsResponse = new TeacherRatingsResponse(teacher.getId(), fullName, overallScore, overallNumberOfVotes);
             teacherRatingsResponsesList.add(teacherRatingsResponse);
         }
         return teacherRatingsResponsesList;
