@@ -27,23 +27,34 @@ The TeacherRatingResponse is used for the bar chart in the front-end.
 
 ## End-points documentation
 ### Teacher end-points
+1. To display the teachers on the application, the Teacher component should be created when the page loads. That is why a method to get all teachers from the database is needed.
 GET /api/teachers
 Status code: 400 - Status code is returned.
 No response and no response schema, status code is returned.
 Status: 200
-| Example Response  | Response Schema |
-| ----------------- | --------------- |
-| {                 |                
-    "teachers": [   |
-        {           |
-            "id": "123",|
-            "first_name": "Tawfiq",|
-            "last_name": "Jawhar"
-        },
-        {
-            "id": "124",
-            "first_name": "Brendan",
-            "last_name": "Wood"
-        }
-    ]
-| }
+| Example Response                 | Response Schema                 |
+| -------------------------------- |---------------------------------|
+| {                                | {                               |             
+|    "teachers": [                 |  "type": "object",              |
+|       {                          |   "required": [],               |
+|            "id": "123",          |    "properties": {              |
+|           "first_name": "Tawfiq",|     "teachers": {               |
+|            "last_name": "Jawhar" |      "type": "array",           |
+|       },                         |       "items": {                |
+|        {                         |        "type": "object",        |
+|            "id": "124",          |         "required": [],         |
+|            "first_name": "Petar",|          "properties": {        |
+|            "last_name": "Kehayov"|           "id": {               |
+|        }                         |            "type": "string"     |
+|    ]                             |            },                   |
+| }                                |             "first_name": {     |
+|                                  |              "type": "string"   |
+|                                  |             },                  |
+|                                  |              "last_name": {     |
+|                                  |               "type": "string"  |
+|                                  |             }                   |
+|                                  |          }                      |
+|                                  |        }                        |
+|                                  |      }                          |
+|                                  |    }                            |
+|                                  |  }                              |
