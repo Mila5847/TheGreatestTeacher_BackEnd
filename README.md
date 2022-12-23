@@ -32,29 +32,29 @@ GET /api/teachers
 Status code: 400 - Status code is returned.
 No response and no response schema, status code is returned.
 Status: 200
-| Example Response                 | Response Schema                 |
-| -------------------------------- |---------------------------------|
-| {                                | {                               |             
-|    "teachers": [                 |  "type": "object",              |
-|       {                          |   "required": [],               |
-|            "id": "123",          |    "properties": {              |
-|           "first_name": "Tawfiq",|     "teachers": {               |
-|            "last_name": "Jawhar" |      "type": "array",           |
-|       },                         |       "items": {                |
-|        {                         |        "type": "object",        |
-|            "id": "124",          |         "required": [],         |
-|            "first_name": "Petar",|          "properties": {        |
-|            "last_name": "Kehayov"|           "id": {               |
-|        }                         |            "type": "string"     |
-|    ]                             |            },                   |
-| }                                |             "first_name": {     |
-|                                  |              "type": "string"   |
-|                                  |             },                  |
-|                                  |              "last_name": {     |
-|                                  |               "type": "string"  |
-|                                  |             }                   |
-|                                  |          }                      |
-|                                  |        }                        |
-|                                  |      }                          |
-|                                  |    }                            |
-|                                  |  }                              |
+   | Example Response           | Response Schema        |  
+   |----------------------------|------------------------|
+   |                            | {                      |  
+   | {                          |  "type":"object"       |  
+   |  "teachers": [             |  "required":[],        |   
+   |  {                         |  "properties": {       |   
+   |   "id": "123",             |   "teachers": {        |  
+   |   "first_name": "Tawfiq",  |    "type": "array",    |   
+   |  },                        |    "items": {          |   
+   |  {                         |     "type": "object",  |   
+   |   "id": "124",             |     "required": [],    |  
+   |   "first_name": "Brendan", |     "properties": {    |   
+   |   "last_name": "Wood"      |      "id": {           |   
+   | }                          |       "type": "string" |   
+   | ]                          |      },                |  
+   | }                          |     "first_name": {    |   
+   |                            |      "type": "string"  |   
+   |                            |     },                 |  
+   |                            |      "last_name": {    |   
+   |                            |      "type": "string"  |   
+   |                            |      }                 |  
+   |                            |     }                  |   
+   |                            |    }                   |   
+   |                            |   }                    |   
+   |                            |  }                     |   
+   |                            | }                      |   
