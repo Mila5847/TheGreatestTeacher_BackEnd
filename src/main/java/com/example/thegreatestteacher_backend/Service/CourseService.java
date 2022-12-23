@@ -28,15 +28,14 @@ public class CourseService {
     @Autowired
     TeacherRepository teacherRepository;
 
+    public List<Course> getAllCoursesOfTeacher(@PathVariable int teacherId){
+        return courseRepository.getAllByTeacherId(teacherId);
+    }
     public Course addCourseToTeacher(@PathVariable int teacherId, @Valid @RequestBody CourseRequest courseRequest) {
         Teacher teacher = teacherRepository.findById(teacherId)
                 .orElseThrow(()-> new ResourceNotFoundException("The teacher cannot be found."));
         Course courseToBeAdded = new Course(courseRequest);
         courseToBeAdded.setTeacher(teacher);
         return courseRepository.save(courseToBeAdded);
-    }
-
-    public List<Course> getAllCoursesOfTeacher(@PathVariable int teacherId){
-        return courseRepository.getAllByTeacherId(teacherId);
     }
 }
