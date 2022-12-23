@@ -31,4 +31,10 @@ public class Course {
         id = courseRequest.getId();
         name = courseRequest.getName();
     }
+
+    public Course(CourseRequest courseRequest, Teacher teacher){
+        id = courseRequest.getId();
+        name = courseRequest.getName();
+        this.teacher = teacher;
+    }
 }

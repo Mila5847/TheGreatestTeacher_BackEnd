@@ -1,12 +1,6 @@
 package com.example.thegreatestteacher_backend.Controller;
 
-import com.example.thegreatestteacher_backend.Entity.Course;
-import com.example.thegreatestteacher_backend.Request.CourseRequest;
-import com.example.thegreatestteacher_backend.Request.ScoreRequest;
 import com.example.thegreatestteacher_backend.Request.TeacherRequest;
-import com.example.thegreatestteacher_backend.Response.CourseResponse;
-import com.example.thegreatestteacher_backend.Response.ScoreResponse;
-import com.example.thegreatestteacher_backend.Service.CourseService;
 import com.example.thegreatestteacher_backend.Service.TeacherService;
 import com.example.thegreatestteacher_backend.Entity.Teacher;
 import com.example.thegreatestteacher_backend.Response.TeacherResponse;

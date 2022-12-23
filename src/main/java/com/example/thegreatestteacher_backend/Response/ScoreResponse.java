@@ -1,6 +1,5 @@
 package com.example.thegreatestteacher_backend.Response;
 
-import com.example.thegreatestteacher_backend.Entity.Course;
 import com.example.thegreatestteacher_backend.Entity.Score;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

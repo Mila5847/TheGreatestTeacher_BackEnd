@@ -1,16 +1,17 @@
 package com.example.thegreatestteacher_backend.Controller;
 
-
 import com.example.thegreatestteacher_backend.Entity.Course;
 import com.example.thegreatestteacher_backend.Entity.Score;
 import com.example.thegreatestteacher_backend.Request.CourseRequest;
 import com.example.thegreatestteacher_backend.Response.CourseResponse;
 import com.example.thegreatestteacher_backend.Service.CourseService;
 import com.example.thegreatestteacher_backend.Service.ScoreService;
-import com.example.thegreatestteacher_backend.Service.TeacherService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.validation.Valid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +46,10 @@ public class CourseController {
     @ResponseStatus(HttpStatus.CREATED)
     public CourseResponse addCourseToTeacher(@PathVariable int teacherId, @RequestBody CourseRequest courseRequest){
         return new CourseResponse(courseService.addCourseToTeacher(teacherId, courseRequest));
+    }
+
+    @PutMapping("/{teacherId}/{courseId}")
+    public CourseResponse updateCourse(@PathVariable int teacherId, @PathVariable int courseId, @Valid @RequestBody CourseRequest courseRequest){
+        return new CourseResponse(courseService.updateCourse(teacherId, courseId, courseRequest));
     }
 }

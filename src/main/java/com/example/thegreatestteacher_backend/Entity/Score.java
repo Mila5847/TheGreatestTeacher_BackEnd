@@ -1,6 +1,5 @@
 package com.example.thegreatestteacher_backend.Entity;
 
-import com.example.thegreatestteacher_backend.Request.CourseRequest;
 import com.example.thegreatestteacher_backend.Request.ScoreRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

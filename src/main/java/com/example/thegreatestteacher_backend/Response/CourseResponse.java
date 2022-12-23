@@ -29,4 +29,5 @@ public class CourseResponse {
         name = course.getName();
         teacher = new TeacherResponse(course.getTeacher());
     }
+
 }
