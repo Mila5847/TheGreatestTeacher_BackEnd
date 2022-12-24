@@ -4,7 +4,8 @@
 There are three entity tables: Teacher, Course, and Score.
 There is a Many-To-One relationship between the Course and the Teacher entity since a teacher can have many courses.
 There is a One-To-One relationship between the Course and the Score entity since a course can have only one score.
-![Entity-Relationship Diagram](C:\Users\kehay\Desktop\finalEntityTables.drawio.png)
+
+![Entity-Relationship Diagram](finalEntityTables.drawio.png)
 
 ## Classes Structures
 In addition to the Teacher entity, there is the TeacherController, TeacherService, TeacherRepository, TeacherRequest, and TeacherResponse.
