@@ -1,5 +1,14 @@
 # TheGreatestTeacher_BackEnd
 
+## Project Overview
+Done throughout my second year of College in Computer Science for my Java class, the Greatest Teacher project's purpose was to develop an application that allows a user to rate teachers and view their performances using Axios for the HTTP requests and React libraries for the UI. This is the back-end documentation for the project.
+
+## Table of Contents
+- [Database Design](#db-design)
+- [Classes Structure](#classes-structure)
+- [Endpoints Documentation](#endpoints)
+
+<a name="db-design"></a>
 ## Database Design: Entity-Relationship Diagram
 There are three entity tables: Teacher, Course, and Score.
 There is a Many-To-One relationship between the Course and the Teacher entity since a teacher can have many courses.
@@ -7,28 +16,30 @@ There is a One-To-One relationship between the Course and the Score entity since
 
 ![Entity-Relationship Diagram](finalEntityTables.drawio.png)
 
+<a name="classes-structure"></a>
 ## Classes Structures
 In addition to the Teacher entity, there is the TeacherController, TeacherService, TeacherRepository, TeacherRequest, and TeacherResponse.
-The TeacherController contains the end-points for getting all the teachers, adding teachers, and deleting teachers.
+The TeacherController contains the endpoints for getting all the teachers, adding teachers, and deleting teachers.
 To get all the teachers, the TeacherService communicates with the TeacherRepository to find all the teachers with the repository's findAll() method.
 The save() method from the TeacherRepository is used to save a newly added teacher, and the deleteById() method allows to delete a teacher with a specific Id.
 To build a TeacherRequest (ex.: when adding a teacher), its id, and its first, and last name should be specified. The TeacherResponse is composed of the teacher's id and their full name (first name + last name).
 
 In addition to the Course entity, there is also the CourseController, CourseService, CourseRepository, CourseRequest, and CourseResponse.
-The CourseController contains end-points to get, add, and update the courses of a specific teacher.
+The CourseController contains endpoints to get, add, and update the courses of a specific teacher.
 To get all the teacher's courses, the CourseService communicates with the CourseRepository that uses the getAllByTeacherId() method. 
 The TeacherRepository's findById() method is used to find the specific teacher to whom a course would be added. Then, with the save() method from the CourseRepository, a new course can be saved for the teacher.
 The save() method is also used when updating a teacher.
 To build a CourseRequest, the id and the name of the course should be specified. The CourseResponse is composed of the course's id, its name, the name of the teacher who teaches the course, and the number of votes for the course.
 
 In addition to the Score entity, there is also the ScoreController, ScoreService, ScoreRepository, ScoreRequest, and ScoreResponse.
-The ScoreController contains end-points to add a score to a course and to get the overall score of the teacher's courses (which is the teacher's rating).
+The ScoreController contains endpoints to add a score to a course and to get the overall score of the teacher's courses (which is the teacher's rating).
 To add a score, the save() method from the ScoreRepository is used. To get all the courses, the getScoresByCourseId() method from the ScoreRepository is used.
 To build a ScoreRequest, the id and the score should be specified. There is a TeacherRatingResponse that is composed of the teacher's id, full name, overall score, and the number of votes.
 The TeacherRatingResponse is used for the bar chart in the front-end. For a more detailed explanation of the front-end, please visit the front-end repository at https://github.com/Mila5847/The-Greatest-Teacher.
 
-## End-points documentation
-### Teacher end-points
+<a name="end-points"></a>
+## Endpoints Documentation
+### Teacher endpoints
 
 1. GET /api/teachers 
 Returns a list of all the teachers present in the Teacher table.
@@ -79,7 +90,7 @@ Status: 201 – Teacher created successfully.
 Status: 400 - Status code is returned.
 Status: 200 - Id of deleted teacher is returned.
 
-### Course end-points
+### Course endpoints
 
 1. GET /api/courses/{teacherId}
 Status code: 400 - Status code is returned.
@@ -150,7 +161,7 @@ Status: 201 – Course created successfully.
 Status: 400 - Status code is returned.
 Status: 200 - Updated course is returned.
 
-### Score end-points
+### Score endpoints
 
 1. GET /api/scores
    Status code: 400 - Status code is returned.
